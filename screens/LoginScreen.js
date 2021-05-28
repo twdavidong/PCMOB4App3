@@ -13,7 +13,7 @@ export default function LoginScreen({navigation}) {  // =========== Start LoginS
 
     function login() {  // ===================== login Function ===========================
         Keyboard.dismiss();
-           auth.signInWithEmailAndPassword(email,password)
+           auth.signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                 console.log("Sign In!");
                 })
@@ -49,7 +49,7 @@ export default function LoginScreen({navigation}) {  // =========== Start LoginS
                     />
 
                 <TouchableOpacity style = {styles.loginButton} onPress={login}>
-                        <Text style={styles.buttonText}>Log In</Text>
+                        <Text style={styles.textButton}>Log In</Text>
                     </TouchableOpacity>        
                 <Text style={styles.errorText}>{errorText}</Text>
             </View>
@@ -121,7 +121,8 @@ backgroundColor: '#D740D0',
 paddingVertical: 20,
 paddingHorizontal: 80,
 },
-loginButton: {             
+loginButton: {
+fontSize: 40,
 marginBottom: 20,
 borderRadius: 15,
 backgroundColor: '#D740D0',
@@ -137,7 +138,7 @@ errorText: {
 color: "red",
 marginTop: 20,
 marginLeft: 20,
-MarginRight: 20,
+marginRight: 20,
 height: 40,
 },
 });

@@ -13,7 +13,7 @@ export default function App() {  // ======================== Start Default Funct
   return (
       <NavigationContainer>
         <Stack.Navigator mode="modal">
-          <Stack.Screen component={ChatScreen} name="Chat" />
+          <Stack.Screen component={ChatScreen} name="Chat by David OngTW" />
           <Stack.Screen 
                         component={LoginScreen}
                         name="Login"
