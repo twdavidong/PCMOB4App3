@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
-import { StyleSheet, Text, Keyboard, TextInput, View, TouchableOpacity, TouchableWithoutFeedback } from "react-native";
+import { StyleSheet, Text, Keyboard, TextInput, View, TouchableOpacity, TouchableWithoutFeedback, ImageBackground } from "react-native";
 
 import firebase from "../database/firebaseDB";
 
     const auth = firebase.auth();
+
 
 export default function LoginScreen({navigation}) {  // =========== Start LoginScreen Function ==================
     const [email, setEmail] = useState("");
@@ -15,17 +16,19 @@ export default function LoginScreen({navigation}) {  // =========== Start LoginS
         Keyboard.dismiss();
            auth.signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
-                console.log("Sign In!");
+                console.log("Signed In!");
                 })
                 .catch((error) => {
                 console.log("Error!");
                 setErrorText(error.message);
                 });        
     }
+    
+    const image = { uri: "../assets/image.jpg" };
 
     return (    // ======================== return ====================================
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <View style = {styles.container}>
+            <View style = {styles.container}> <ImageBackground source={require('../assets/image.jpg')} style={styles.image}>
                 <Text style = {styles.title}>Chat App by David OTW</Text>
                 <Text style = {styles.fieldTitle}>
                     Email
@@ -47,11 +50,12 @@ export default function LoginScreen({navigation}) {  // =========== Start LoginS
                     value={password}
                     onChangeText={(input) => setPassword(input)}
                     />
-
+                    
                 <TouchableOpacity style = {styles.loginButton} onPress={login}>
                         <Text style={styles.textButton}>Log In</Text>
                     </TouchableOpacity>        
                 <Text style={styles.errorText}>{errorText}</Text>
+                </ImageBackground>
             </View>
         </TouchableWithoutFeedback>
     );
@@ -93,13 +97,20 @@ flex: 0.5,
 justifyContent: "center",
 borderRadius: 20,
 },
-    // Filler ==========================
+    // Filler & Background ==========================
 fillerContainer:{
 padding: 10,
 backgroundColor: "blue",
 flex: 0.25,
 width: "50%",
-},                    
+},
+image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
+    width: '100%',
+    height: '100%',
+  },                    
     // Input ==========================
 arrivalTime: {      
 marginBottom: 10,
